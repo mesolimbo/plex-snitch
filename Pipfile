@@ -4,8 +4,9 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-psutil = "*"
-requests = "*"
+psutil = "==7.0.0"
+pyinstaller = "==6.14.1"
+requests = "==2.32.4"
 
 [dev-packages]
 
