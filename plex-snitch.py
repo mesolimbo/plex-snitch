@@ -1,7 +1,21 @@
+import os
+import sys
+
 import requests
 import psutil
 
-with open("snitch.txt", "r") as f:
+def get_app_path():
+    if getattr(sys, 'frozen', False):
+        # If the application is run as a bundle (PyInstaller)
+        return os.path.dirname(sys.executable)
+    else:
+        # If the application is run as a script
+        return os.path.dirname(os.path.abspath(__file__))
+
+app_path = get_app_path()
+snitch_path = os.path.join(app_path, "snitch.txt")
+
+with open(snitch_path, "r") as f:
     SNITCH_URL = f.read().strip()
 
 def is_plex_running():
